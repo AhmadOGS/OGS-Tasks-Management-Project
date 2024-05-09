@@ -1,0 +1,716 @@
+/* WEBKIT STUFF */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+::-webkit-scrollbar-track {
+    background: rgb(59, 59, 59);
+  }
+::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* THE MAIN BOX */
+.container {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    height: 50%;
+    margin-top: 25%;
+    margin-bottom: 25%;
+    background-color: rgb(59, 59, 59);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    border-radius: 7px;
+    flex-wrap: wrap;
+}
+
+/* WINDOWS ANIMATIONS */
+@keyframes appears {
+    from {bottom: 28%; opacity: 0;}
+    to {bottom: 25%; opacity: 1; display: none;}
+}
+  
+@keyframes disappears {
+    from {bottom: 25%; opacity: 1;}
+    to {bottom: 28%; opacity: 0;}
+}
+
+#visible {
+    opacity: 1;
+    animation-name: appears;
+    animation-duration: .2s;
+    animation-timing-function: ease-in;
+}
+
+#unvisible {
+    opacity: 0;
+    z-index: -999;
+    bottom: 28%;
+    user-select: none;
+    animation-fill-mode: forwards;
+    animation-name: disappears;
+    animation-duration: .15s;
+    animation-timing-function: ease-in;
+}
+
+/*  ADD BUTTON  */
+.add-btn {
+    margin-top: .5%;
+    margin-left: .5%;
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: aquamarine;
+    border-radius: 10px;
+    color: rgb(89, 89, 89);
+    cursor: pointer;
+    transition: all .15s ease-in;
+    width: 10%;
+}
+
+.add-btn:hover {
+    background-color: aqua;
+    scale: 105%;
+}
+
+/*  WINDOWS  */
+.add-task-window, .edit-window {
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    bottom: 25%;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: azure;
+    border-radius: 10px;
+    border: 10px black solid;
+}
+
+.add-task-window h1, .edit-window h1 {
+    width: 95%;
+    text-align: center;
+    height: 20%;
+    user-select: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+}
+
+.add-task-window form, .edit-window form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 80%;
+}
+
+
+.informations-form {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 55%;
+    align-items: center;
+    justify-content: space-around center;
+}
+
+.informations-form div {
+    width: 45%;
+}
+
+.informations-form div label {
+    user-select: none;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.informations-form .type-input {
+    width: 95%;
+}
+
+.informations-form .toggle-daily-btn {
+    cursor: pointer;
+    user-select: none;
+    height: 15%;
+    width: 15%;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+    border-radius: 5px;
+    font-weight: 550;
+    transition: all .15s ease-out;
+}
+
+.informations-form .toggle-daily-btn:hover {
+    margin-left: .5%;
+}
+
+#daily {
+    background-color: rgb(9, 255, 0);
+    color: black;
+}
+
+#not-daily {
+    background-color: red;
+    color: aliceblue;
+}
+
+#daily:hover, #not-daily:hover {
+    background-color: aqua;
+}
+
+.cancel-btn, .save-btn {
+    width: 10%;
+    height: 10%;
+    margin-left: 1%;
+    margin-top: 0%;
+    cursor: pointer;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    transition: all .1s ease-in;
+    border-radius: 4px;
+    user-select: none;
+    border: 0px;
+}
+
+.cancel-btn {
+    background-color: red;
+    color: aliceblue;
+}
+
+.save-btn {
+    background-color: rgb(37, 255, 99);
+}
+
+.cancel-btn:hover, .save-btn:hover {
+    background-color: rgb(65, 166, 255);
+}
+
+
+
+/*  TASKS BOX  */
+.tasks-container {
+    width: 95%;
+    user-select: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 2.5%;
+}
+
+/*  THE TASK  */
+
+.task-holder {
+    width: 100%;
+}
+
+.streatched {
+    padding-bottom: 30%;
+}
+
+.task {
+    margin-top: 3%;
+    display: flex;
+    background-color: antiquewhite;
+    border-radius: 7px 7px 0px 0px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    transition: all .3s ease-out;
+}
+
+/*  SIDE BUTTONS OF THE TASK  */
+.side-btns {
+    height: 100%;
+    display: flex;
+    width: 5%;
+    margin-left: -1%;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.side-btns span {
+    width: 55%;
+    font-size: 20px;
+    text-align: center;
+    background-color: #888;
+    border-radius: 50%;
+    user-select: none;
+    cursor: pointer;;
+    margin-bottom: 3px;
+    transition: all .15s ease-in;
+}
+
+.side-btns span:hover {
+    margin-left: 7%;
+}
+
+.side-btns .remove-btn {
+    background-color: rgb(237, 44, 44);
+}
+
+.side-btns .edit-btn {
+    background-color: rgb(60, 148, 243);
+}
+
+/*  THE TASK CONTENT  */
+.task h3 {
+    width: 50%;
+    margin-top: 0.2%;
+    margin-left: .2%;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  
+}
+
+.task-infos {
+    display: flex;
+    width: 95%;
+}
+
+.task-infos div {
+    width: 95%;
+}
+
+.task-infos div h3 {
+    font-size: 26px;
+    margin-bottom: -1%;
+    user-select: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.task-infos div #paragraph {
+    font-size: 18px;
+    width: 100%;
+    user-select: none;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    overflow-wrap: break-word;
+    -webkit-box-orient: vertical;
+    margin-bottom: 2%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.task-infos div #show-more {
+    font-size: 18px;
+    user-select: none;
+    overflow-wrap: break-word;
+    width: 100%;
+    overflow: hidden;
+    -webkit-line-clamp: 200;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    margin-bottom: 2%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* CHECK BUTTON  */
+#checked {
+    background-color: rgb(28, 149, 255);
+}
+
+#checked:hover {
+    background-color: rgb(115, 255, 136);
+}
+
+.task-infos .check-btn {
+    width: 30px;
+    user-select: none;
+    height: 30px;
+    margin-top: 1%;
+    background-color: rgb(0, 255, 38);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .15s ease-in;
+}
+
+.task-infos .check-btn:hover {
+    background-color: rgb(125, 194, 255);
+}
+
+/*  TASK TYPE BOX  */
+.type-box {
+    background-color: crimson;
+    padding-bottom: .25%;
+    text-align: center;
+    z-index: 0;
+    font-size: 20px;
+    user-select: none;
+    color: rgb(255, 255, 255);
+    border-radius: 0px 0px 6px 6px;
+    margin-bottom: -1%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+/* MEDIA QUIRIES */
+@media (max-width: 1512px) {
+    .container {
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+    .add-task-window, .edit-window {
+        width: 60%;
+    }
+}
+@media (max-width: 1300px) {
+    .container {
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    .add-task-window, .edit-window {
+        width: 70%;
+    }
+}
+@media (max-width: 1050px) {
+    .container {
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .side-btns span {
+        width: 60%;
+    }
+    .add-task-window, .edit-window {
+        width: 80%;
+        bottom: 20%;
+        height: 65%;
+    }
+}
+@media (max-width: 880px) {
+    .cancel-btn, .save-btn {
+        font-size: 17px;
+    }
+    .informations-form .toggle-daily-btn {
+        font-size: 22px;
+    }
+    .add-task-window, .edit-window {
+        height: 60%;
+    }
+}
+@media (max-width: 750px) {
+    .container {
+        width: 85%;
+        margin-left: 7.5%;
+        margin-right: 7.5%;
+    }
+    .add-task-window, .edit-window {
+        width: 85%;
+        margin-left: -2.3%;
+        border: 5px solid black;
+    }
+    .side-btns span {
+        width: 66%;
+        font-size: 16px;
+    }
+    .type-box {
+        font-size: 16px;
+    }
+    .task-infos div h3 {
+        font-size: 22px;
+    }
+    .task-infos div #paragraph, .task-infos div #show-more {
+        font-size: 17px;
+    }
+    .task-infos .check-btn {
+        width: 25px;
+        height: 25px;
+    }
+}
+@media (max-width: 720px) {
+    #desc {
+        width: 70%;
+        height: 26px;
+    }
+    .cancel-btn, .save-btn {
+        height: 8%;
+        width: 20%;
+        font-size: 16px;
+    }
+    .informations-form .toggle-daily-btn {
+        height: 12%;
+    }
+    #title {
+        width: 55%;
+    }
+}
+@media (max-width: 650px) {
+    .informations-form div {
+        width: 75%;
+        margin-bottom: 3%;
+        scale: 105%;
+    }
+    .add-task-window, .edit-window {
+        bottom: 25%;
+        height: 60%;
+    }
+    .informations-form .toggle-daily-btn {
+        font-size: 18px;
+        width: 30%;
+    }
+    #title {
+        width: 50%;
+    }
+    .cancel-btn, .save-btn {
+        width: 45%;
+        margin-bottom: -5%;
+    }
+}
+@media (max-width: 550px) {
+    .add-btn {
+        font-size: 20px;
+        width: 15%;
+    }
+    .informations-form div {
+        width: 85%;
+    }
+}
+@media (max-width: 450px) {
+    .container {
+        width: 95%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
+    .add-task-window, .edit-window {
+        width: 94%;
+    }
+    .add-task-window h1, .edit-window h1 {
+        font-size: 35px;
+    }
+    .side-btns span {
+        width: 80%;
+        font-size: 14px;
+    }
+    .type-box {
+        font-size: 13px;
+    }
+    .task-infos div h3 {
+        font-size: 18px;
+    }
+    .task-infos div #paragraph, .task-infos div #show-more {
+        font-size: 14px;
+    }
+    .task-infos .check-btn {
+        width: 21px;
+        height: 21px;
+    }
+}
+@media (max-width: 350px) {
+    .container {
+        width: 99%;
+        margin-left: .5%;
+        margin-right: .5%;
+    }
+    #title, #desc {
+        width: 100%;
+    }
+    #type {
+        width: 90%;
+    }
+    .add-task-window, .edit-window {
+        height: 55%;
+    }
+    .cancel-btn, .save-btn {
+        font-size: 20px;
+    }
+    .side-btns span {
+        width: 80%;
+        font-size: 12px;
+    }
+    .type-box {
+        font-size: 10px;
+    }
+    .task-infos div h3 {
+        font-size: 15px;
+    }
+    .task-infos div #paragraph, .task-infos div #show-more {
+        font-size: 13px;
+    }
+    .add-btn {
+        font-size: 16px;
+    }
+    .task-infos .check-btn {
+        width: 18px;
+        height: 18px;
+    }
+}
+@media (max-width: 250px) {
+    .container {
+        width: 100%;
+    }
+    .side-btns span {
+        width: 87%;
+        font-size: 10px;
+    }
+    .add-btn {
+        font-size: 10px;
+    }
+}
+@media (min-width: 2400px) {
+    .container {
+        width: 75%;
+        margin-left: 12.5%;
+        margin-right: 12.5%;
+    }
+    .type-box {
+        font-size: 50px;
+    }
+    .task-infos div h3 {
+        font-size: 75px;
+    }
+    .task-infos div #paragraph, .task-infos div #show-more {
+        font-size: 52px;
+    }
+    .add-btn {
+        font-size: 76px;
+    }
+    .task-infos .check-btn {
+        width: 68px;
+        height: 68px;
+    }
+    .side-btns span {
+        font-size: 52px;
+        width: 65%;
+    }
+    .add-task-window, .edit-window {
+        width: 75%;
+        height: 40%;
+        bottom: 40%;
+    }
+    .cancel-btn, .save-btn {
+        font-size: 60px;
+        width: 20%;
+    }
+    .add-task-window h1, .edit-window h1 {
+        font-size: 105px;
+    }
+    .informations-form .toggle-daily-btn {
+        font-size: 68px;
+        width: 20%;
+    }
+    .informations-form div label {
+        font-size: 75px;
+    }
+    .informations-form div input {
+        height: 50px;
+        font-size: 40px;
+    }
+    @keyframes appears {
+        from {bottom: 43%; opacity: 0;}
+        to {bottom: 40%; opacity: 1; display: none;}
+    }
+      
+    @keyframes disappears {
+        from {bottom: 40%; opacity: 1;}
+        to {bottom: 43%; opacity: 0;}
+    }
+}
+@media (min-width: 3500px) {
+    .task-infos div #paragraph, .task-infos div #show-more {
+        font-size: 70px;
+    }
+    .task-infos div h3 {
+        font-size: 95px;
+    }
+    .type-box {
+        font-size: 70px;
+    }
+    .task-infos .check-btn {
+        width: 88px;
+        height: 88px;
+    }
+    .side-btns span {
+        font-size: 72px;
+        width: 65%;
+    }
+    .add-btn {
+        font-size: 86px;
+    }
+}
+@media (min-width: 4630px) {
+    .task-infos div #paragraph, .task-infos div #show-more {
+        font-size: 85px;
+    }
+    .task-infos div h3 {
+        font-size: 115px;
+    }
+    .type-box {
+        font-size: 85px;
+    }
+    .side-btns span {
+        width: 60%;
+    }
+    .task-infos .check-btn {
+        width: 108px;
+        height: 108px;
+    }
+    .add-task-window, .edit-window {
+        width: 75%;
+        height: 50%;
+        bottom: 30%;
+    }
+    .cancel-btn, .save-btn {
+        font-size: 90px;
+        width: 20%;
+    }
+    .add-task-window h1, .edit-window h1 {
+        font-size: 145px;
+    }
+    .informations-form .toggle-daily-btn {
+        font-size: 98px;
+        width: 20%;
+    }
+    .informations-form div label {
+        font-size: 95px;
+    }
+    .informations-form div input {
+        height: 60px;
+        font-size: 60px;
+    }
+    @keyframes appears {
+        from {bottom: 33%; opacity: 0;}
+        to {bottom: 30%; opacity: 1; display: none;}
+    }
+      
+    @keyframes disappears {
+        from {bottom: 30%; opacity: 1;}
+        to {bottom: 33%; opacity: 0;}
+    }
+}
+@media (min-width: 5400px) {
+    .task-infos div #paragraph, .task-infos div #show-more {
+        font-size: 95px;
+    }
+    .task-infos div h3 {
+        font-size: 135px;
+    }
+    .type-box {
+        font-size: 85px;
+    }
+    .side-btns span {
+        width: 55%;
+    }
+    .task-infos .check-btn {
+        width: 138px;
+        height: 138px;
+    }
+}
+@media (min-width: 5800px) {
+    .side-btns span {
+        width: 45%;
+        font-size: 90px;
+    }
+    .type-box {
+        font-size: 90px;
+    }
+    .task-infos div h3 {
+        font-size: 155px;
+    }
+    .task-infos div #paragraph, .task-infos div #show-more {
+        font-size: 100px;
+    }
+}
