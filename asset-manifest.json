@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/OGS-Tasks-Management-Project/static/css/main.93ef6e6b.css",
+    "main.js": "/OGS-Tasks-Management-Project/static/js/main.a9566cd5.js",
+    "static/js/453.ac79db8d.chunk.js": "/OGS-Tasks-Management-Project/static/js/453.ac79db8d.chunk.js",
+    "index.html": "/OGS-Tasks-Management-Project/index.html",
+    "main.93ef6e6b.css.map": "/OGS-Tasks-Management-Project/static/css/main.93ef6e6b.css.map",
+    "main.a9566cd5.js.map": "/OGS-Tasks-Management-Project/static/js/main.a9566cd5.js.map",
+    "453.ac79db8d.chunk.js.map": "/OGS-Tasks-Management-Project/static/js/453.ac79db8d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93ef6e6b.css",
+    "static/js/main.a9566cd5.js"
+  ]
+}
